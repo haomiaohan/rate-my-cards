@@ -1,0 +1,41 @@
+<div class="jumbotron">
+	<h1 class="display-4">New User Sign Up</h1>
+    <p class="lead">Sign up now to save the list of recommened cards for you, or to add your own credit cards and compare which card is the best!</p>
+    <hr class="my-4">
+    {{#if message}}
+        <div class="alert alert-warning fade show" role="alert">
+            <strong>It seems that {{message}}.</strong> Please check and try sign up again.
+        </div>
+    {{/if}}
+    <div class="hidden alert alert-warning fade show" role="alert" id="registration-alert">
+        <strong>It seems that some information you entered is invalid.</strong> Please check and try sign up again.
+    </div>
+	<form method="POST" action="" onsubmit="return validateForm()">
+        <div class="form-group row">
+            <div class="input-group mb-3 col-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Username</span>
+                </div>
+                <input type="text" name="username" class="form-control">
+            </div>
+            <div class="input-group mb-3 col-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Email</span>
+                </div>
+                <input type="text" name="email" class="form-control">
+            </div>
+            <div class="input-group mb-3 col-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Password</span>
+                </div>
+                <input type="password" name="password" class="form-control">
+            </div>
+            <div class="input-group mb-3 col-sm-1">
+                <button type="submit" class="btn btn-primary">Register</button>
+            </div>
+        </div>
+    </form>
+    <p class="lead">Already have an account? <a href="/login">Log in here.</a></p>
+</div>
+
+<script src="/script/register-script.js"></script>

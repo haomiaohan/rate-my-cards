@@ -1,0 +1,106 @@
+{{#if card}}
+<div class="jumbotron">
+	<h1 class="display-4">{{card.name}}</h1>
+	<p class="lead">Learn more about the {{card.name}} card here!</p>
+</div>
+
+<div class="card-image">
+    <img src="/images/{{card.slug}}.png">
+</div>
+
+<div class="card detail-view">
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <span class="nav-link active" id="highlights">Highlights</span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link" id="earn">Earn Points</span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link" id="redeem">Redeem Points</span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link" id="other">Fees/Other Benefits</span>
+            </li>
+            <li class="nav-item">
+                <span class="nav-link" id="comments">Comments</span>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body" id="highlights-body">
+        <h5 class="card-title">Highlights</h5>
+        <p class="card-text">{{card.highlights}}</p>
+    </div>
+    <div class="card-body hidden" id="earn-body">
+        <h5 class="card-title">Earning Points</h5>
+        <ul>
+            <li>Earn {{card.dinning}} point(s) per dollar spent on Dining purchases</li>
+            <li>Earn {{card.air}} point(s) per dollar spent on Air Travel</li>
+            <li>Earn {{card.hotel}} point(s) per dollar spent on Hotel</li>
+            <li>Earn {{card.otherTravel}} point(s) per dollar spent on Other Travel purchases</li>
+            <li>Earn {{card.groceries}} point(s) per dollar spent on Groceries</li>
+            <li>Earn {{card.gas}} point(s) per dollar spent on Gas</li>
+            <li>Earn {{card.amazon}} point(s) per dollar spent on purchases on Amazon.com</li>
+            <li>Earn {{card.otherOnline}} point(s) per dollar spent on Other Online purchases</li>
+            <li>Earn {{card.allOthers}} point(s) per dollar spent on All Other purchases</li>
+        </ul>
+    </div>
+    <div class="card-body hidden" id="redeem-body">
+        <h5 class="card-title">Redeeming Points</h5>
+        <p class="card-text">Each point worth up to {{card.redeemValue}} cent(s) when redeemed.</p>
+    </div>
+    <div class="card-body hidden" id="other-body">
+        {{#if card.otherBenefits}}
+        <h5 class="card-title">Other Benefits</h5>
+        <ul>
+            {{#each card.otherBenefits as |benefit|}}
+                <li>{{benefit}}</li>
+            {{/each}}
+            {{#if card.travelCredit}}
+                <li>Get a statement credit of ${{card.travelCredit}} each year to be applied on all travel purchases</li>
+            {{/if}}
+            {{#if card.travelCreditAmex}}
+                <li>Get a statement credit of ${{card.travelCreditAmex}} each year to be applied on Air Travel</li>
+            {{/if}}
+        </ul>
+        {{/if}}
+        <h5 class="card-title">Fees</h5>
+        <p class="card-text">Effective Annual Fee: ${{card.annualFee}}</p>
+        <p class="card-text italics-font">Note that the above annual fee shown is the effectively annual fee, which is calculated by deducting a resonable amount of travel/dining credits offered by this card (if exist) from the gross annual fee.</p>
+    </div>
+    <div class="card-body hidden" id="comments-body">
+        <h5 class="card-title">Comments</h5>
+        <div class="comments-display">
+        </div>
+
+        <!-- alert for comment saving success & failure -->
+        <div id="saveCommentFailure" class="alert alert-danger fade show hidden" role="alert">
+            <strong>Oops...</strong>We are not able to save your comment <span id='failure-msg'></span>. Please try submitting it again.
+        </div>
+        <div id="saveCommentSuccess" class="alert alert-success fade show hidden" role="alert">
+            <strong>Success!</strong> Your comment has been posted.
+        </div>
+
+        <div class="add-comments">
+            {{#if username}}
+                <label for="commentsContent">Add your comment:</label>
+                <p class="italics-font">You are logged in as <span id="username" class="bold-font">{{username}}</span>. This username will be displayed on your comment.</p>
+                <textarea class="form-control" id="comments-content" name="commentsContent" rows="3"></textarea>
+                <br>
+                <button class="btn btn-primary" id="submit">Submit</button>
+            {{else}}
+                <p>Only registered users can publish comments. Please <a href="/login">log in</a> first.</p>
+            {{/if}}
+        </div>
+    </div>
+</div>
+{{else}}
+<div class="jumbotron">
+	<h1 class="display-4">Hmmm....</h1>
+	<p class="lead">It seems that we don't have the information you requested.</p>
+</div>
+{{/if}}
+
+<script src='/script/card-detail-script.js'></script>
+<script src='/script/comments-script.js'></script>

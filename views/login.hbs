@@ -1,0 +1,30 @@
+<div class="jumbotron">
+	<h1 class="display-4">Log In</h1>
+    <p class="lead">Log in now to access more features on this website!</p>
+    <hr class="my-4">
+    {{#if message}}
+        <div class="alert alert-warning fade show" role="alert" id="bottom-alert">
+            <strong>It seems that {{message}}.</strong> Please check and try log in again.
+        </div>
+    {{/if}}
+	<form method="POST" action="">
+        <div class="form-group row">
+            <div class="input-group mb-3 col-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Username</span>
+                </div>
+                <input type="text" name="username" class="form-control">
+            </div>
+            <div class="input-group mb-3 col-sm">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">Password</span>
+                </div>
+                <input type="password" name="password" class="form-control">
+            </div>
+            <div class="input-group mb-3 col-sm-1">
+                <button type="submit" class="btn btn-primary">Log In</button>
+            </div>
+        </div>
+    </form>
+    <p class="lead">Don't have an account yet? <a href="/register">Sign up</a> for one now - it only takes 30 seconds!</p>
+</div>

@@ -1,0 +1,105 @@
+.navbar-nav button {
+    color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.8);
+    margin: 0 5px;
+}
+
+.navbar-nav button:hover{
+    color: #007bff;
+    border-color: #007bff;
+    background-color: white;
+}
+
+.username {
+    margin-left: 5px; 
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.username:hover {
+    color: white;
+}
+
+.jumbotron {
+    width: 75%;
+    margin: 2em auto;
+}
+
+.survey {
+    width: 75%;
+    margin: 2em auto;
+}
+
+.notice {
+    width: 85%;
+    margin: 2em auto;
+    text-align: center;
+}
+
+.info {
+    font-style: italic; 
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.btn-block {
+    width: 75%;
+    margin: 2em auto;
+}
+
+.cards-list {
+    width: 75%;
+    margin: 4em auto;
+}
+
+.cards-list div {
+    margin: 1em auto;
+}
+
+.card-detail-text {
+    padding-top: 1em;
+}
+
+.card-image {
+    text-align: center;
+}
+
+.detail-view {
+    width: 75%;
+    margin: 2em auto;
+}
+
+.detail-view .nav-link:hover {
+    cursor: default;
+    color: #007bff;
+}
+
+.blue-color {
+    color: #007bff;
+}
+
+.hidden {
+    display: none;
+}
+
+.red-border {
+    border: 1px solid #dc3545;
+}
+
+.bold-red-border {
+    border: 2px solid #dc3545;
+}
+
+.bold-font {
+    font-weight: bold;
+}
+
+.italics-font {
+    font-style: italic;
+}
+
+::placeholder {
+    color: rgba(220, 53, 69, 0.5);
+    font-size: 12px;
+}

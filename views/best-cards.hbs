@@ -1,0 +1,161 @@
+<!-- markup for the survey page -->
+
+<div class="jumbotron">
+	<h1 class="display-4">Firstly, a simple survey...</h1>
+	<p class="lead">In order for us to check which credit cards are the most suitable for you, please answer the following questions regarding your monnthly spending habits. Simply enter the numbers and let us do the math!</p>
+</div>
+<div class="survey">
+    <form method="POST" action="/best-cards/result" onsubmit="return validateForm();">
+        <div class="hidden alert alert-warning fade show" role="alert" id='credit-alert'>
+            <strong>It seems you have not selected any of the following options.</strong> Please select your credit score and resubmit the form.
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-1"></div>
+            <label class="col-sm-7 col-form-label">How Good is your credit score?</label>
+            <div class="col-sm-3">
+                <div class="btn-group btn-group-toggle button-selection" data-toggle="buttons" id="credit-selection-buttons">
+                    <label class="btn btn-primary">
+                        <input type="radio" name="credit-selection" id="no-credit" value="no-credit" autocomplete="off"> No Credit
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="credit-selection" id="bad-credit" value="bad-credit" autocomplete="off"> &lt;670
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="credit-selection" id="good-credit" value="good-credit" autocomplete="off"> &gt;=670
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-1"></div>
+            <p class="info col-sm-7">For more information on credit scores and how to easily check your credit scores for free, click <a href="https://www.doctorofcredit.com/credit-reports-scoring-reference-pages/">here</a>.</p>
+        </div>
+        <div class="hidden alert alert-warning fade show" role="alert" id="reward-alert">
+            <strong>It seems you have not selected any of the following options.</strong> Please select your preferred option and resubmit the form.
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-1"></div>
+            <label class="col-sm-7 col-form-label">Do you prefer cash back or reward points (airline miles)?</label>
+            <div class="col-sm-3">
+                <div class="btn-group btn-group-toggle button-selection" data-toggle="buttons" id="reward-selection-buttons">
+                    <label class="btn btn-primary">
+                        <input type="radio" name="reward-type-selection" id="cash-back" value="cash-back" autocomplete="off"> Cash Back
+                    </label>
+                    <label class="btn btn-primary">
+                        <input type="radio" name="reward-type-selection" id="reward-points" value="reward-points" autocomplete="off"> Reward Points
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-1"></div>
+            <p class="info col-sm-7">Cash back is self explanatory: you get $$$ back for each purchase. Reward points is a little more complex: see <a href="https://onemileatatime.com/types-miles-points/">here</a> for details. If you are not very familiar with credit cards and or airline/hotel's frequent traveler programs yet, we recommend that you stick with cash back first.</p>
+        </div>
+        <div class="spend-survey">
+            <div class="form-group row">
+                <div class="col-sm-1"></div>
+                <p class="col-sm-7">How much do you spend each month on...</p>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-1"></div>
+                <p class="col-sm-7">Eating out?</p>
+                <div class="input-group mb-3 col-sm-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" name="dining" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-1"></div>
+                <p class="col-sm-7">Air travel?</p>
+                <div class="input-group mb-3 col-sm-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" name="air" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-1"></div>
+                <p class="col-sm-7">Hotel stays?</p>
+                <div class="input-group mb-3 col-sm-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" name="hotel" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-1"></div>
+                <p class="col-sm-7">Other travel (including subway/bus/trains, taxi, Uber/Lyft, car rental, parking, tolls)?</p>
+                <div class="input-group mb-3 col-sm-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" name="otherTravel" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-1"></div>
+                <p class="col-sm-7">Groceries (but NOT including Wal-Mart, Target and warehouse clubs)?</p>
+                <div class="input-group mb-3 col-sm-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" name="groceries" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-1"></div>
+                <p class="col-sm-7">Gas?</p>
+                <div class="input-group mb-3 col-sm-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" name="gas" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-1"></div>
+                <p class="col-sm-7">Amazon.com?</p>
+                <div class="input-group mb-3 col-sm-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" name="amazon" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-1"></div>
+                <p class="col-sm-7">Other online purchases?</p>
+                <div class="input-group mb-3 col-sm-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" name="online" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-1"></div>
+                <p class="col-sm-7">All other purchases?</p>
+                <div class="input-group mb-3 col-sm-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" name="allOther" class="form-control" aria-label="Amount (to the nearest dollar)">
+                </div>
+            </div>
+        </div>
+        <div class="hidden alert alert-warning fade show" role="alert" id="bottom-alert">
+            <strong>It seems that some of your inputs are not valid.</strong> Please check and resubmit the form.
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg btn-block">See the best cards!</button>
+    </form>
+    <div class="notice">
+        <p class="italics-font">Note: By continue using this website, you acknowledge that you have read and agreed to our Important User Disclosures, which is detailed <a href="/about/">here</a>.</p>
+    </div>
+</div>
+
+
+<script src='/script/script.js'></script>

@@ -1,0 +1,25 @@
+{{#if cards}}
+<div class="jumbotron">
+	<h1 class="display-4">Welcome {{username}}</h1>
+	<p class="lead">Below is the list of your saved cards.</p>
+</div>
+<div class="container cards-list">
+    {{#each cards}}
+    <div class="row card-detail">
+        <div class="col">
+            <img src="/images/{{this.slug}}.png">
+        </div>
+        <div class="col card-detail-text border">
+			<h5>{{this.name}}</h5>
+            <p>By using this card, you can earn up to <span class="bold">${{this.rewards}}</span> worth of cash back/reward points per month!</p>
+            <a href="/all-cards/{{this.slug}}"><button type="button" class="btn btn-primary">See details</button></a>
+        </div>
+    </div>
+    {{/each}}
+</div>
+{{else}}
+<div class="jumbotron">
+	<h1 class="display-4">Welcome {{username}}</h1>
+	<p class="lead">It seems that you don't have any saved cards yet.</p>
+</div>
+{{/if}}

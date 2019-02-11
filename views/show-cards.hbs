@@ -1,0 +1,85 @@
+<!-- markup for the result page (after user completes the survey) -->
+
+<div class="jumbotron">
+	<h1 class="display-4">{{headerMsg}}</h1>
+	<p class="lead">{{infoMsg}}</p>
+</div>
+
+{{#if resultCards}}
+<div class="container cards-list">
+    {{#each resultCards}}
+    <div class="row card-detail">
+        <div class="col">
+            <img src="/images/{{this.slug}}.png">
+        </div>
+        <div class="col card-detail-text border">
+            <h5>{{this.name}}</h5>
+            <p>By using this card, you can earn up to <span class="bold">${{this.rewards}}</span> worth of cash back/reward points per month!</p>
+            <a href="/all-cards/{{this.slug}}"><button type="button" class="btn btn-primary">Card Details</button></a>
+            <a class="btn btn-info" data-toggle="collapse" href="#calcDetails-{{this.slug}}" role="button" aria-expanded="false" aria-controls="calcDetails">Calculation Details</a>
+            <div class="collapse" id="calcDetails-{{this.slug}}">
+                <div class="card card-body">   
+                    <p>Dinning: ${{this.spend.dining}} * {{this.dinning}}% = <span class="bold">${{this.calcDetails.dining}}</span></p>
+                    <p>Air Travel: ${{this.spend.air}} * {{this.air}}% = <span class="bold">${{this.calcDetails.air}}</span></p>
+                    <p>Hotel: ${{this.spend.hotel}} * {{this.hotel}}% = <span class="bold">${{this.calcDetails.hotel}}</span></p>
+                    <p>Other Travel: ${{this.spend.otherTravel}} * {{this.otherTravel}}% = <span class="bold">${{this.calcDetails.otherTravel}}</span></p>
+                    <p>Groceries: ${{this.spend.groceries}} * {{this.groceries}}% = <span class="bold">${{this.calcDetails.groceries}}</span></p>
+                    <p>Gas: ${{this.spend.gas}} * {{this.gas}}% = <span class="bold">${{this.calcDetails.gas}}</span></p>
+                    <p>Amazon.com: ${{this.spend.amazon}} * {{this.amazon}}% = <span class="bold">${{this.calcDetails.amazon}}</span></p>
+                    <p>Other Online Purchases: ${{this.spend.online}} * {{this.otherOnline}}% = <span class="bold">${{this.calcDetails.online}}</span></p>
+                    <p>All Other Purchases: ${{this.spend.allOther}} * {{this.allOthers}}% = <span class="bold">${{this.calcDetails.allOther}}</span></p>
+                    <hr>
+                    <p>Gross Cash Back/Reward Points Earned Per Month: ${{this.calcDetails.grossRewards}}</p>
+                    <p>Effective Annual Fee Per Month: ${{this.calcDetails.effectiveAnnualFee}}</p>
+                    <p>Redeem Value Per Point: {{this.redeemValue}}</p>
+                    <hr>
+                    <p><span class="bold blue-color">Net Rewards Per Month: </span>${{this.calcDetails.grossRewards}} * {{this.redeemValue}} - ${{this.calcDetails.effectiveAnnualFee}} = <span class="bold blue-color">${{this.rewards}}</span></p>
+                </div>   
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+<button type="submit" class="btn btn-primary btn-lg btn-block" data-toggle="modal" data-target="#confirmOverwrite">Save to "My Cards"</button>
+<div class="modal fade" id="confirmOverwrite" tabindex="-1" role="dialog" aria-labelledby="confirmOverwriteLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmOverwriteLabel">Confirm Overwrite?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>If you have already saved a list of cards, saving this new list will overwrite your old list. In that case, are you sure that you want to overwrite your old preferences?</p> 
+                <p>(You can ignore this message and simply click "Yes" if you do not have any previously saved cards.)</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Oops, go back</button>
+                <a href='/save'><button type="button" class="btn btn-primary">Yes, overwrite old data</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{else}}
+    {{#if allCards}}
+    <div class="container cards-list">
+        {{#each allCards}}
+        <div class="row card-detail">
+            <div class="col">
+                <img src="/images/{{this.slug}}.png">
+            </div>
+            <div class="col card-detail-text border">
+                <h5>{{this.name}}</h5>
+                <p>{{this.highlights}}</p>
+                <a href="/all-cards/{{this.slug}}"><button type="button" class="btn btn-primary">See details</button></a>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    {{/if}}
+{{/if}}
+
+
+
